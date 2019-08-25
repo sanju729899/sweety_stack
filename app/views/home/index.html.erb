@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <div class="container">
+    <h2>Welcome to Sweety!</h2>
+    <h4>This is your personal blood glucose level app!</h4>
+    <% if user_signed_in? %>  <br/>
+      <%= link_to 'Enter new blood glucose reading', new_reading_path, class: 'btn btn-success' %>  <br/>
+        <br/>
+      <p><%= link_to 'View History', readings_path, class: 'btn btn-primary'  %></p>
+    <% else %>
+      <p>Please register to begin:</p>
+      <p><%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %></p>
+      <p><%= link_to 'Log In', new_user_session_path, class: 'btn btn-primary btn-lg', id: 'login' %></p>
+    <% end %>
+  </div>
+</div>

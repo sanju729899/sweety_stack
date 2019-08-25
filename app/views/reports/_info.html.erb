@@ -1,0 +1,31 @@
+<%= form_tag(method: "post") do %>
+   <div class="row"> <div class="input-group date col-md-3" id="datepicker">
+    <input type="text" class="form-control" required=true name="report_end">
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-calendar"></i>
+      </span>
+  </div><br />
+   <input type="submit" class="btn btn-primary" value="Update Report"></div>
+<% end %>
+
+
+<ul>
+  <li>Report End: <%= @report_end %></li>
+  <li>Oldest Report Date: <%= @readings.oldest_report %></li>
+  <li>Newest Report Date: <%= @readings.newest_report %></li>
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    <% if params["action"] == "daily"  %>
+    $('.input-group.date').datepicker({format: "dd/mm/yyyy"});
+    <% else %>
+    $('.input-group.date').datepicker({
+      format: "dd/mm/yyyy",
+      startDate: "<%= @readings.oldest_report %>",
+      endDate: "<%= @readings.newest_report %>"
+    });
+     <%end %>
+  });
+ 
+</script>

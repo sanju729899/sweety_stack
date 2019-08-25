@@ -1,0 +1,14 @@
+<h1>Daily Reports</h1>
+<%if @report.empty? %>
+<h1><strong>No Reports Found</strong></h1>
+<% else %>
+<h1><strong><%= @report.last.try(:readed_date).strftime("%d-%m-%Y") %></strong></h1>
+<%= render 'report', reportObject: @report , :locals => {:daily => true} %>
+<%end%>
+<%if @readings.empty?%>
+<h1><strong>Create Entry</strong></h1> 
+<%else%>
+<%= render 'info' %>
+<%end%>
+
+<%= link_to 'Back to Readings', readings_path %>

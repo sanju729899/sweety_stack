@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <h2>Select type of Report</h2>
+    <% if user_signed_in? %>
+      <p><%= link_to 'Daily Reports', daily_report_reports_path, class: 'btn btn-primary btn-lg' %></p>
+      <p><%= link_to 'Date Select Reports', date_wise_report_reports_path, class: 'btn btn-primary btn-lg', id: 'login' %></p>
+      <p><%= link_to 'Monthly Reports', monthly_report_reports_path, class: 'btn btn-primary btn-lg', id: 'login' %></p>
+    <% end %>
+  </div>
+<%= link_to 'Back to Readings', readings_path %>

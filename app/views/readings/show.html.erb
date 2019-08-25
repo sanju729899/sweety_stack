@@ -1,0 +1,21 @@
+<p>
+  <strong>User: </strong>
+  <%= @reading.user.name %>
+</p>
+<p>
+    <strong>Title:</strong>
+    <%= @reading.title %>
+</p>
+
+<p>
+    <strong>Number:</strong>
+    <%= @reading.blood_sugar %> mg/dl
+</p>
+<p>
+    <strong>Readed Date:</strong>
+    <%= @reading.readed_date %> 
+</p>
+
+
+<%= link_to 'Edit', [:edit,  @reading] %> |
+<%= link_to 'Back', readings_path %>

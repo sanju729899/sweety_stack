@@ -1,0 +1,29 @@
+<table class="table">
+  <tr>
+    <th>Date Readed</th>
+    <th>Title</th>
+    <th>Blood Sugar</th>
+    <th>User</th>
+    <th>Readed On</th>
+    <th colspan="3"><%= link_to new_icon, new_reading_path %></th>
+  </tr>
+
+  <% if objects.present? %>
+    <% objects.each do |object,value| %>
+    <tr><td rowspan=<%= %(#{value.count+1})%>><%=object%></td></tr>
+    <% value.each do |readin|  %>
+      <tr class=<%= %(reading_row_#{readin.id}) %> >
+        <td><%= readin.title %></td>
+        <td><%= "#{readin.blood_sugar} mg/dl" %></td>
+        <td><%= readin.user.name %></td>
+        <td><%= "#{time_ago_in_words(readin.readed_date)} ago" %></td>
+        <td><%= link_to show_icon, [readin], id: "show-reading" %></td>
+        <td><%= link_to edit_icon, [:edit, readin], id: "edit-reading" %></td>
+        <td><%= link_to delete_icon, [readin], method: :delete, id: "delete-reading" %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  <% else %>
+    <p>There are no readings to process. <%= new_reading_path %></p>
+  <% end %>
+</table>
