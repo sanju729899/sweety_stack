@@ -8,7 +8,7 @@ class Reading < ApplicationRecord
   validates :blood_sugar,
       presence: true,
       numericality: { only_integer: true,greater_than_or_equal_to: 0 }
-       # mattr_accessor :current_user
+       mattr_accessor :current_user
 
    validate :over_daily_readings_limit
 
@@ -16,7 +16,6 @@ class Reading < ApplicationRecord
   ERROR_MESSAGE = "Maximum of #{MAX_READINGS} blood glucose readings per day."
 
   def over_daily_readings_limit
-  	byebug
     if user.readings.daily_range(readed_date).count >= MAX_READINGS
       errors.add(:base,ERROR_MESSAGE)
     end
